@@ -1,0 +1,142 @@
+@import "../variables.scss";
+
+header {
+    min-height: 800px;
+    background-image: url("../../img/header-bg.png");
+    background-repeat: no-repeat;
+    background-size: cover;
+
+    nav {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        min-height: 100px;
+
+        .nav__left {
+          img {
+            display: block;
+          }
+        }
+
+        .nav__mobile {
+            display: none;
+        }
+
+        .nav__right {
+            display: flex;
+            align-items: center;
+            gap: 64px;
+
+            .nav__menu {
+                display: flex;
+                gap: 32px;
+
+                li {
+                    list-style-type: none;
+
+                    a {
+                        display: block;
+                        text-decoration: none;
+                        color: #fff;
+
+                        &:hover {
+                            text-decoration: underline;
+                        }
+                    }
+                }
+            }
+
+            .nav__lang {
+                display: flex;
+                gap: 16px;
+
+                a {
+                    display: block;
+                    text-decoration: none;
+                    color: #fff;
+                }
+            }
+        }
+
+        @media screen and (max-width: $mobile) {
+            .nav__mobile {
+                display: block;
+            }
+
+            .nav__right {
+                flex-direction: column;
+                align-items: flex-start;
+                position: fixed;
+                top: 0;
+                left: -5000px;
+                width: 250px;
+                height: 100vh;
+                background: #fff;
+                gap: 32px;
+                padding: 30px;
+                transition: left 0.3s;
+
+                &.active__nav {
+                    transition: left 0.3s;
+                    left: 0px;
+                }
+                
+                .nav__menu {
+                    flex-direction: column;
+                    gap: 16px;
+                    li {
+                        a {
+                            color: $darkText;
+                        }
+                    }
+                }
+            }
+
+            .nav__lang {
+                a {
+                    color: $darkText;
+                }
+            }
+        }
+    }
+
+    .header__content{
+        max-width: 540px;
+        padding: 128px 10px 128px 10px;
+        margin: 0 auto;
+        text-align: center;
+
+        h1 {
+            font-size: min(99px, max(40px + 2vw));
+            letter-spacing: 5px;
+            font-weight: normal;
+            color: #fff;
+            margin: 0;
+        }
+
+        p {
+            margin: 64px 0;
+            font-size: 21px;
+            color: #fff;
+        }
+
+        a {
+            width: 183px;
+            height: 42px;
+            line-height: 26px;
+            margin: 0 auto;
+        }
+    }
+
+    @media screen and (max-width: $mobile) {
+        min-height: unset;
+
+        .header__content{
+            padding: 64px 10px 64px 10px;
+
+            p {
+                margin: 32px 0;
+            }
+        }
+    }
+}
